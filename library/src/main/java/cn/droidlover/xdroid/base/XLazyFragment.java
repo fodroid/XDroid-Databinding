@@ -1,27 +1,28 @@
 package cn.droidlover.xdroid.base;
 
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.os.Bundle;
+import android.view.View;
 
-import butterknife.Unbinder;
 import cn.droidlover.xdroid.event.BusFactory;
-import cn.droidlover.xdroid.kit.KnifeKit;
 
 /**
- * Created by wanglei on 2017/1/26.
+ * Created by shihao on 2017/1/26.
  */
 
-public abstract class XLazyFragment extends LazyFragment implements UiCallback {
+public abstract class XLazyFragment<D extends ViewDataBinding> extends LazyFragment implements UiCallback {
 
     private UiDelegate uiDelegate;
 
-    private Unbinder unbinder;
+    private D binding;
 
     @Override
     protected void onCreateViewLazy(Bundle savedInstanceState) {
         super.onCreateViewLazy(savedInstanceState);
         if (getLayoutId() > 0) {
             setContentView(getLayoutId());
-            unbinder = KnifeKit.bind(this, getRealRootView());
+            bindUI(getRealRootView());
         }
         if (useEventBus()) {
             BusFactory.getBus().register(this);
@@ -30,6 +31,13 @@ public abstract class XLazyFragment extends LazyFragment implements UiCallback {
         initData(savedInstanceState);
     }
 
+    protected D getBinding() {
+        return binding;
+    }
+
+    public void bindUI(View rootView) {
+        binding = DataBindingUtil.bind(rootView);
+    }
 
     @Override
     protected void onDestoryLazy() {

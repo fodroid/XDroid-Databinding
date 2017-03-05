@@ -2,6 +2,8 @@ package cn.droidlover.xdroid.base;
 
 import android.app.Activity;
 import android.content.Context;
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,20 +11,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import butterknife.Unbinder;
 import cn.droidlover.xdroid.event.BusFactory;
-import cn.droidlover.xdroid.kit.KnifeKit;
 
 /**
  * Created by wanglei on 2016/11/27.
  */
 
-public abstract class XFragment extends Fragment implements UiCallback {
+public abstract class XFragment<D extends ViewDataBinding> extends Fragment implements UiCallback {
     protected View rootView;
     protected LayoutInflater layoutInflater;
     protected Activity context;
     protected UiDelegate uiDelegate;
-    private Unbinder unbinder;
+    private D binding;
 
     @Nullable
     @Override
@@ -30,7 +30,7 @@ public abstract class XFragment extends Fragment implements UiCallback {
         layoutInflater = inflater;
         if (rootView == null) {
             rootView = inflater.inflate(getLayoutId(), null);
-            unbinder = KnifeKit.bind(this, rootView);
+            bindUI(rootView);
         } else {
             ViewGroup viewGroup = (ViewGroup) rootView.getParent();
             if (viewGroup != null) {
@@ -39,6 +39,14 @@ public abstract class XFragment extends Fragment implements UiCallback {
         }
 
         return rootView;
+    }
+
+    protected D getBinding() {
+        return binding;
+    }
+
+    public void bindUI(View rootView) {
+        binding = DataBindingUtil.bind(rootView);
     }
 
 

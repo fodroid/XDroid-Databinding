@@ -1,22 +1,23 @@
 package cn.droidlover.xdroid.base;
 
 import android.app.Activity;
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import butterknife.Unbinder;
 import cn.droidlover.xdroid.event.BusFactory;
-import cn.droidlover.xdroid.kit.KnifeKit;
 
 /**
  * Created by wanglei on 2016/11/27.
  */
 
-public abstract class XActivity extends AppCompatActivity implements UiCallback{
+public abstract class XActivity<D extends ViewDataBinding> extends AppCompatActivity implements UiCallback {
     protected Activity context;
     protected UiDelegate uiDelegate;
-    private Unbinder unbinder;
+    private D binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,11 +25,18 @@ public abstract class XActivity extends AppCompatActivity implements UiCallback{
         this.context = this;
 
         if (getLayoutId() > 0) {
-            setContentView(getLayoutId());
-            unbinder = KnifeKit.bind(this);
+            bindUI(getLayoutId());
         }
         setListener();
         initData(savedInstanceState);
+    }
+
+    protected D getBinding() {
+        return binding;
+    }
+
+    public void bindUI(@LayoutRes int layoutResID) {
+        binding = DataBindingUtil.setContentView(context, layoutResID);
     }
 
 
