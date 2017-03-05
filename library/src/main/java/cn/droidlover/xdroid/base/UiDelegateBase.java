@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.View;
 import android.widget.Toast;
 
+import cn.droidlover.xdroid.kit.ToastManager;
+
 /**
  * Created by wanglei on 2016/12/1.
  */
@@ -52,12 +54,12 @@ public class UiDelegateBase implements UiDelegate {
 
     @Override
     public void toastShort(String msg) {
-        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+        ToastManager.showShort(context, msg);
     }
 
     @Override
     public void toastLong(String msg) {
-        Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
+        ToastManager.showLong(context, msg);
     }
 
 }

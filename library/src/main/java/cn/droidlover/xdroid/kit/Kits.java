@@ -10,8 +10,11 @@ import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.support.annotation.IdRes;
+import android.support.annotation.StringRes;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.Closeable;
@@ -174,7 +177,8 @@ public class Kits {
             try {
                 PackageManager packageManager = context.getPackageManager();
                 if (packageManager != null) {
-                    ApplicationInfo applicationInfo = packageManager.getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
+                    ApplicationInfo applicationInfo = packageManager.getApplicationInfo(context.getPackageName(),
+                            PackageManager.GET_META_DATA);
                     if (applicationInfo != null) {
                         if (applicationInfo.metaData != null) {
                             resultData = applicationInfo.metaData.getString(key);
@@ -229,7 +233,8 @@ public class Kits {
 
 
     public static class Random {
-        public static final String NUMBERS_AND_LETTERS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        public static final String NUMBERS_AND_LETTERS =
+                "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         public static final String NUMBERS = "0123456789";
         public static final String LETTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         public static final String CAPITAL_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -422,7 +427,8 @@ public class Kits {
          * write file
          *
          * @param stream the input stream
-         * @param append if <code>true</code>, then bytes will be written to the end of the file rather than the beginning
+         * @param append if <code>true</code>, then bytes will be written to the end of the file rather than the
+         *               beginning
          * @return return true
          * @throws RuntimeException if an error occurs while operator FileOutputStream
          */
@@ -447,7 +453,8 @@ public class Kits {
          *
          * @param file   the file to be opened for writing.
          * @param stream the input stream
-         * @param append if <code>true</code>, then bytes will be written to the end of the file rather than the beginning
+         * @param append if <code>true</code>, then bytes will be written to the end of the file rather than the
+         *               beginning
          * @return return true
          * @throws RuntimeException if an error occurs while operator FileOutputStream
          */
@@ -584,7 +591,8 @@ public class Kits {
             if (extenPosi == -1) {
                 return filePath.substring(filePosi + 1);
             }
-            return (filePosi < extenPosi ? filePath.substring(filePosi + 1, extenPosi) : filePath.substring(filePosi + 1));
+            return (filePosi < extenPosi ? filePath.substring(filePosi + 1, extenPosi) : filePath.substring(filePosi
+                    + 1));
         }
 
         /**
@@ -685,7 +693,8 @@ public class Kits {
         }
 
         /**
-         * Creates the directory named by the trailing filename of this file, including the complete directory path required
+         * Creates the directory named by the trailing filename of this file, including the complete directory path
+         * required
          * to create this directory. <br/>
          * <br/>
          * <ul>
@@ -695,7 +704,8 @@ public class Kits {
          * </ul>
          *
          * @param filePath
-         * @return true if the necessary directories have been created or the target directory already exists, false one of
+         * @return true if the necessary directories have been created or the target directory already exists, false
+         * one of
          * the directories can not be created.
          * <ul>
          * <li>if {@link File#getFolderName(String)} return null, return false</li>
@@ -1038,7 +1048,8 @@ public class Kits {
                     type = NETWORK_TYPE_WIFI;
                 } else if ("MOBILE".equalsIgnoreCase(typeName)) {
                     String proxyHost = android.net.Proxy.getDefaultHost();
-                    type = TextUtils.isEmpty(proxyHost) ? (isFastMobileNetwork(context) ? NETWORK_TYPE_3G : NETWORK_TYPE_2G)
+                    type = TextUtils.isEmpty(proxyHost) ? (isFastMobileNetwork(context) ? NETWORK_TYPE_3G :
+                            NETWORK_TYPE_2G)
                             : NETWORK_TYPE_WAP;
                 } else {
                     type = NETWORK_TYPE_UNKNOWN;
@@ -1113,6 +1124,4 @@ public class Kits {
 
 
     }
-
-
 }
