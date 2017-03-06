@@ -1153,7 +1153,7 @@ public class Kits {
          * @return
          */
         public static boolean isEmail(String email) {
-            Pattern p = Pattern.compile("^[\\w\\.-]+@[a-zA-Z0-9][\\w\\.-]*[a-zA-Z0-9]\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]$");
+            Pattern p = Pattern.compile("^\\w[-\\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\\.)+[A-Za-z]{2,14}$");
             Matcher m = p.matcher(email);
             return m.matches();
         }
@@ -1170,36 +1170,55 @@ public class Kits {
             return m.matches();
         }
 
+        /**
+         * 是否为身份证号
+         *
+         * @param num
+         * @return
+         */
         public static boolean isIDNumber(String num) {
-            Pattern p = Pattern.compile("");
+            Pattern p = Pattern.compile("^\\d{15}|\\d{17}[0-9Xx]$");
             Matcher m = p.matcher(num);
             return m.matches();
         }
 
-
+        /**
+         * 是否为QQ号
+         *
+         * @param qq
+         * @return
+         */
         public static boolean isQQNumber(String qq) {
-            Pattern p = Pattern.compile("");
+            Pattern p = Pattern.compile("^[1-9][0-9]{4,}$");
             Matcher m = p.matcher(qq);
             return m.matches();
         }
 
+        /**
+         * 时候为邮政编码
+         *
+         * @param code
+         * @return
+         */
         public static boolean isPostalCode(String code) {
-            Pattern p = Pattern.compile("");
+            Pattern p = Pattern.compile("^[1-9][0-9]{5}$");
             Matcher m = p.matcher(code);
             return m.matches();
         }
 
+        /**
+         * 是否为ipv4地址
+         *
+         * @param ip
+         * @return
+         */
         public static boolean isIPV4Address(String ip) {
-            Pattern p = Pattern.compile("");
+            Pattern p = Pattern.compile("^((?:(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}" +
+                    "(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))))$");
             Matcher m = p.matcher(ip);
             return m.matches();
         }
 
-        public static boolean isIPV6Address(String ip) {
-            Pattern p = Pattern.compile("");
-            Matcher m = p.matcher(ip);
-            return m.matches();
-        }
 
         /**
          * 从html中找出img标签中的图片地址
