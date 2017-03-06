@@ -1,7 +1,9 @@
 package cn.droidlover.xdroid.demo.ui;
 
 import cn.droidlover.xdroid.base.SimpleRecAdapter;
+import cn.droidlover.xdroid.base.SimpleRecBindingViewHolder;
 import cn.droidlover.xdroid.demo.adapter.HomeAdapter;
+import cn.droidlover.xdroid.demo.databinding.AdapterHomeBinding;
 import cn.droidlover.xdroid.demo.model.GankResults;
 import cn.droidlover.xrecyclerview.RecyclerItemCallback;
 import cn.droidlover.xrecyclerview.XRecyclerView;
@@ -18,9 +20,11 @@ public class HomeFragment extends BasePagerFragment {
     public SimpleRecAdapter getAdapter() {
         if (adapter == null) {
             adapter = new HomeAdapter(context);
-            adapter.setRecItemClick(new RecyclerItemCallback<GankResults.Item, HomeAdapter.ViewHolder>() {
+            adapter.setRecItemClick(new RecyclerItemCallback<GankResults.Item,
+                    SimpleRecBindingViewHolder<AdapterHomeBinding>>() {
                 @Override
-                public void onItemClick(int position, GankResults.Item model, int tag, HomeAdapter.ViewHolder holder) {
+                public void onItemClick(int position, GankResults.Item model, int tag,
+                                        SimpleRecBindingViewHolder<AdapterHomeBinding> holder) {
                     super.onItemClick(position, model, tag, holder);
                     switch (tag) {
                         case HomeAdapter.TAG_VIEW:

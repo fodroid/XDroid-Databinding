@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
-    android:background="@drawable/view_shadow"
-    android:orientation="vertical"
-    android:padding="10dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:id="@+id/tv_item"
+    <data>
+
+        <variable
+            name="item"
+            type="cn.droidlover.xdroid.demo.model.GankResults.Item"/>
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="?attr/selectableItemBackground"
-        android:textColor="@color/text_primary"
-        android:textSize="@dimen/item_text_textsize"
-        android:textStyle="bold" />
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/view_shadow"
+        android:orientation="vertical"
+        android:padding="10dp">
 
-</LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="?attr/selectableItemBackground"
+            android:text="@{item.desc}"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/item_text_textsize"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+</layout>

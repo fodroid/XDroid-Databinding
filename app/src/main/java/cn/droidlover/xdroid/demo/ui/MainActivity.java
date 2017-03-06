@@ -1,10 +1,7 @@
 package cn.droidlover.xdroid.demo.ui;
 
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -14,10 +11,10 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
 import cn.droidlover.xdroid.base.XActivity;
 import cn.droidlover.xdroid.base.XFragmentAdapter;
 import cn.droidlover.xdroid.demo.R;
+import cn.droidlover.xdroid.demo.databinding.ActivityMainBinding;
 import cn.droidlover.xdroid.demo.model.Event;
 import cn.droidlover.xdroid.kit.Kits;
 
@@ -25,14 +22,7 @@ import cn.droidlover.xdroid.kit.Kits;
  * Created by wanglei on 2016/11/29.
  */
 
-public class MainActivity extends XActivity {
-
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.tabLayout)
-    TabLayout tabLayout;
-    @BindView(R.id.viewPager)
-    ViewPager viewPager;
+public class MainActivity extends XActivity<ActivityMainBinding> {
 
     List<Fragment> fragmentList = new ArrayList<>();
     String[] titles = {"首页", "干货", "妹子"};
@@ -42,7 +32,7 @@ public class MainActivity extends XActivity {
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        setSupportActionBar(toolbar);
+        setSupportActionBar(getBinding().toolbar);
 
         fragmentList.clear();
         fragmentList.add(HomeFragment.newInstance());
@@ -52,10 +42,10 @@ public class MainActivity extends XActivity {
         if (adapter == null) {
             adapter = new XFragmentAdapter(getSupportFragmentManager(), fragmentList, titles);
         }
-        viewPager.setAdapter(adapter);
-        viewPager.setOffscreenPageLimit(3);
+        getBinding().viewPager.setAdapter(adapter);
+        getBinding().viewPager.setOffscreenPageLimit(3);
 
-        tabLayout.setupWithViewPager(viewPager);
+        getBinding().tabLayout.setupWithViewPager(getBinding().viewPager);
 
     }
 
@@ -83,7 +73,7 @@ public class MainActivity extends XActivity {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(Event.TestEvent event) {
         if (event != null && !Kits.Empty.check(event.name)) {
-            toolbar.setTitle(event.name);
+            getBinding().toolbar.setTitle(event.name);
         }
     }
 

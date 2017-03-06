@@ -5,18 +5,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 
-import butterknife.BindView;
 import cn.droidlover.xdroid.base.SimpleRecAdapter;
+import cn.droidlover.xdroid.base.SimpleRecBindingViewHolder;
 import cn.droidlover.xdroid.demo.R;
+import cn.droidlover.xdroid.demo.databinding.AdapterGirlBinding;
 import cn.droidlover.xdroid.demo.model.GankResults;
 import cn.droidlover.xdroid.imageloader.ILFactory;
-import cn.droidlover.xdroid.kit.KnifeKit;
+
 
 /**
  * Created by wanglei on 2016/12/10.
  */
 
-public class GirlAdapter extends SimpleRecAdapter<GankResults.Item, GirlAdapter.ViewHolder> {
+public class GirlAdapter extends SimpleRecAdapter<GankResults.Item, SimpleRecBindingViewHolder<AdapterGirlBinding>> {
 
 
     public GirlAdapter(Context context) {
@@ -24,8 +25,8 @@ public class GirlAdapter extends SimpleRecAdapter<GankResults.Item, GirlAdapter.
     }
 
     @Override
-    public ViewHolder newViewHolder(View itemView) {
-        return new ViewHolder(itemView);
+    public SimpleRecBindingViewHolder newViewHolder(View itemView) {
+        return new SimpleRecBindingViewHolder(itemView);
     }
 
     @Override
@@ -34,11 +35,9 @@ public class GirlAdapter extends SimpleRecAdapter<GankResults.Item, GirlAdapter.
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(SimpleRecBindingViewHolder<AdapterGirlBinding> holder, int position) {
         GankResults.Item item = data.get(position);
-
-        ILFactory.getLoader().loadNet(holder.ivGirl, item.getUrl(), null);
-
+        ILFactory.getLoader().loadNet(holder.getBinding().ivGirl, item.getUrl(), null);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,14 +48,4 @@ public class GirlAdapter extends SimpleRecAdapter<GankResults.Item, GirlAdapter.
         });
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-
-        @BindView(R.id.iv_girl)
-        ImageView ivGirl;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            KnifeKit.bind(this, itemView);
-        }
-    }
 }

@@ -1,22 +1,21 @@
 package cn.droidlover.xdroid.demo.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import butterknife.BindView;
 import cn.droidlover.xdroid.base.SimpleRecAdapter;
+import cn.droidlover.xdroid.base.SimpleRecBindingViewHolder;
 import cn.droidlover.xdroid.demo.R;
+import cn.droidlover.xdroid.demo.databinding.AdapterGanhuoBinding;
 import cn.droidlover.xdroid.demo.model.GankResults;
-import cn.droidlover.xdroid.kit.KnifeKit;
+
 
 /**
  * Created by wanglei on 2016/12/10.
  */
 
-public class GanhuoAdapter extends SimpleRecAdapter<GankResults.Item, GanhuoAdapter.ViewHolder> {
+public class GanhuoAdapter extends SimpleRecAdapter<GankResults.Item,
+        SimpleRecBindingViewHolder<AdapterGanhuoBinding>> {
 
     public static final int TAG_VIEW = 0;
 
@@ -25,8 +24,8 @@ public class GanhuoAdapter extends SimpleRecAdapter<GankResults.Item, GanhuoAdap
     }
 
     @Override
-    public ViewHolder newViewHolder(View itemView) {
-        return new ViewHolder(itemView);
+    public SimpleRecBindingViewHolder newViewHolder(View itemView) {
+        return new SimpleRecBindingViewHolder(itemView);
     }
 
     @Override
@@ -35,10 +34,9 @@ public class GanhuoAdapter extends SimpleRecAdapter<GankResults.Item, GanhuoAdap
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, final int position) {
+    public void onBindViewHolder(final SimpleRecBindingViewHolder<AdapterGanhuoBinding> holder, final int position) {
         final GankResults.Item item = data.get(position);
-        holder.tvItem.setText(item.getDesc());
-
+        holder.getBinding().setItem(item);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,18 +45,6 @@ public class GanhuoAdapter extends SimpleRecAdapter<GankResults.Item, GanhuoAdap
                 }
             }
         });
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-
-
-        @BindView(R.id.tv_item)
-        TextView tvItem;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            KnifeKit.bind(this, itemView);
-        }
     }
 
 }

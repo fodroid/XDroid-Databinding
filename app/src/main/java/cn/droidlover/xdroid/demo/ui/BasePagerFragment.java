@@ -3,10 +3,10 @@ package cn.droidlover.xdroid.demo.ui;
 import android.os.Bundle;
 import android.view.View;
 
-import butterknife.BindView;
 import cn.droidlover.xdroid.base.SimpleRecAdapter;
 import cn.droidlover.xdroid.base.XLazyFragment;
 import cn.droidlover.xdroid.demo.R;
+import cn.droidlover.xdroid.demo.databinding.FragmentBasePagerBinding;
 import cn.droidlover.xdroid.demo.model.GankResults;
 import cn.droidlover.xdroid.demo.net.JsonCallback;
 import cn.droidlover.xdroid.demo.net.NetApi;
@@ -18,10 +18,8 @@ import okhttp3.Call;
  * Created by wanglei on 2016/12/10.
  */
 
-public abstract class BasePagerFragment extends XLazyFragment {
+public abstract class BasePagerFragment extends XLazyFragment<FragmentBasePagerBinding> {
 
-    @BindView(R.id.contentLayout)
-    XRecyclerContentLayout contentLayout;
 
     protected static final int PAGE_SIZE = 10;
     protected static final int MAX_PAGE = 10;
@@ -34,10 +32,10 @@ public abstract class BasePagerFragment extends XLazyFragment {
     }
 
     private void initAdapter() {
-        setLayoutManager(contentLayout.getRecyclerView());
-        contentLayout.getRecyclerView()
+        setLayoutManager(getBinding().contentLayout.getRecyclerView());
+        getBinding().contentLayout.getRecyclerView()
                 .setAdapter(getAdapter());
-        contentLayout.getRecyclerView()
+        getBinding().contentLayout.getRecyclerView()
                 .setOnRefreshAndLoadMoreListener(new XRecyclerView.OnRefreshAndLoadMoreListener() {
                     @Override
                     public void onRefresh() {
@@ -50,8 +48,8 @@ public abstract class BasePagerFragment extends XLazyFragment {
                     }
                 });
 
-        contentLayout.loadingView(View.inflate(getContext(), R.layout.view_loading, null));
-        contentLayout.getRecyclerView().useDefLoadMoreView();
+        getBinding().contentLayout.loadingView(View.inflate(getContext(), R.layout.view_loading, null));
+        getBinding().contentLayout.getRecyclerView().useDefLoadMoreView();
     }
 
     public void loadData(final int page) {
@@ -59,7 +57,7 @@ public abstract class BasePagerFragment extends XLazyFragment {
 
             @Override
             public void onFail(Call call, Exception e, int id) {
-                contentLayout.showError();
+                getBinding().contentLayout.showError();
             }
 
             @Override
@@ -71,10 +69,10 @@ public abstract class BasePagerFragment extends XLazyFragment {
                         getAdapter().setData(response.getResults());
                     }
 
-                    contentLayout.getRecyclerView().setPage(page, MAX_PAGE);
+                    getBinding().contentLayout.getRecyclerView().setPage(page, MAX_PAGE);
 
                     if (getAdapter().getItemCount() < 1) {
-                        contentLayout.showEmpty();
+                        getBinding().contentLayout.showEmpty();
                         return;
                     }
 

@@ -1,7 +1,9 @@
 package cn.droidlover.xdroid.demo.ui;
 
 import cn.droidlover.xdroid.base.SimpleRecAdapter;
+import cn.droidlover.xdroid.base.SimpleRecBindingViewHolder;
 import cn.droidlover.xdroid.demo.adapter.GirlAdapter;
+import cn.droidlover.xdroid.demo.databinding.AdapterGirlBinding;
 import cn.droidlover.xdroid.demo.model.GankResults;
 import cn.droidlover.xrecyclerview.RecyclerItemCallback;
 import cn.droidlover.xrecyclerview.XRecyclerView;
@@ -18,9 +20,12 @@ public class GirlFragment extends BasePagerFragment {
     public SimpleRecAdapter getAdapter() {
         if (adapter == null) {
             adapter = new GirlAdapter(context);
-            adapter.setRecItemClick(new RecyclerItemCallback<GankResults.Item, GirlAdapter.ViewHolder>() {
+            adapter.setRecItemClick(new RecyclerItemCallback<GankResults.Item,
+                    SimpleRecBindingViewHolder<AdapterGirlBinding>>() {
+
                 @Override
-                public void onItemClick(int position, GankResults.Item model, int tag, GirlAdapter.ViewHolder holder) {
+                public void onItemClick(int position, GankResults.Item model, int tag,
+                                        SimpleRecBindingViewHolder<AdapterGirlBinding> holder) {
                     super.onItemClick(position, model, tag, holder);
                 }
             });

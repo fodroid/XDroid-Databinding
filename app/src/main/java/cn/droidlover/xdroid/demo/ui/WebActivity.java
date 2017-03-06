@@ -14,9 +14,9 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import butterknife.BindView;
 import cn.droidlover.xdroid.base.XActivity;
 import cn.droidlover.xdroid.demo.R;
+import cn.droidlover.xdroid.demo.databinding.ActivityWebBinding;
 import cn.droidlover.xdroid.demo.kit.AppKit;
 import cn.droidlover.xdroid.router.Router;
 import cn.droidlover.xstatecontroller.XStateController;
@@ -25,16 +25,8 @@ import cn.droidlover.xstatecontroller.XStateController;
  * Created by wanglei on 2016/12/11.
  */
 
-public class WebActivity extends XActivity {
+public class WebActivity extends XActivity<ActivityWebBinding> {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.webView)
-    WebView webView;
-    @BindView(R.id.swipeRefreshLayout)
-    SwipeRefreshLayout swipeRefreshLayout;
-    @BindView(R.id.contentLayout)
-    XStateController contentLayout;
 
     String url;
     String desc;
@@ -62,53 +54,53 @@ public class WebActivity extends XActivity {
     }
 
     private void initContentLayout() {
-        contentLayout.loadingView(View.inflate(context, R.layout.view_loading, null));
+        getBinding().contentLayout.loadingView(View.inflate(context, R.layout.view_loading, null));
     }
 
     private void initRefreshLayout() {
-        swipeRefreshLayout.setColorSchemeResources(
+        getBinding().swipeRefreshLayout.setColorSchemeResources(
                 android.R.color.holo_blue_light,
                 android.R.color.holo_red_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_green_light);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        getBinding().swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                webView.loadUrl(url);
+                getBinding().webView.loadUrl(url);
             }
         });
 
     }
 
     private void initWebView() {
-        webView.setWebChromeClient(new WebChromeClient() {
+        getBinding().webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
                 if (newProgress == 100) {
-                    if (contentLayout != null)
-                        contentLayout.showContent();
-                    if (webView != null)
-                        url = webView.getUrl();
+                    if (getBinding().contentLayout != null)
+                        getBinding().contentLayout.showContent();
+                    if (getBinding().webView != null)
+                        url = getBinding().webView.getUrl();
                 } else {
-                    if (contentLayout != null)
-                        contentLayout.showLoading();
+                    if (getBinding().contentLayout != null)
+                        getBinding().contentLayout.showLoading();
                 }
             }
         });
-        webView.setWebViewClient(new WebViewClient());
-        webView.getSettings().setBuiltInZoomControls(true);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setDomStorageEnabled(true);
-        webView.getSettings().setDatabaseEnabled(true);
-        webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        webView.getSettings().setAppCacheEnabled(true);
+        getBinding().webView.setWebViewClient(new WebViewClient());
+        getBinding().webView.getSettings().setBuiltInZoomControls(true);
+        getBinding().webView.getSettings().setJavaScriptEnabled(true);
+        getBinding().webView.getSettings().setDomStorageEnabled(true);
+        getBinding().webView.getSettings().setDatabaseEnabled(true);
+        getBinding().webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        getBinding().webView.getSettings().setAppCacheEnabled(true);
 
-        webView.loadUrl(url);
+        getBinding().webView.loadUrl(url);
     }
 
     private void initToolbar() {
-        setSupportActionBar(toolbar);
+        setSupportActionBar(getBinding().toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_white_24dp);
         getSupportActionBar().setTitle(desc);
@@ -127,16 +119,17 @@ public class WebActivity extends XActivity {
                 finish();
                 break;
             case R.id.action_share:
-                AppKit.shareText(this, webView.getTitle() + " " + webView.getUrl() + " 来自「XDroid」");
+                AppKit.shareText(this, getBinding().webView.getTitle() + " " + getBinding().webView.getUrl() + " " +
+                        "来自「XDroid」");
                 break;
             case R.id.action_refresh:
-                webView.reload();
+                getBinding().webView.reload();
                 break;
             case R.id.action_copy:
-                AppKit.copyToClipBoard(this, webView.getUrl());
+                AppKit.copyToClipBoard(this, getBinding().webView.getUrl());
                 break;
             case R.id.action_open_in_browser:
-                AppKit.openInBrowser(this, webView.getUrl());
+                AppKit.openInBrowser(this, getBinding().webView.getUrl());
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -146,8 +139,8 @@ public class WebActivity extends XActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
             if (keyCode == KeyEvent.KEYCODE_BACK) {
-                if (webView.canGoBack()) {
-                    webView.goBack();
+                if (getBinding().webView.canGoBack()) {
+                    getBinding().webView.goBack();
                 } else {
                     finish();
                 }
@@ -160,25 +153,25 @@ public class WebActivity extends XActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (webView != null) webView.onPause();
+        if (getBinding().webView != null) getBinding().webView.onPause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (webView != null) webView.onResume();
+        if (getBinding().webView != null) getBinding().webView.onResume();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (webView != null) {
-            ViewGroup parent = (ViewGroup) webView.getParent();
+        if (getBinding().webView != null) {
+            ViewGroup parent = (ViewGroup) getBinding().webView.getParent();
             if (parent != null) {
-                parent.removeView(webView);
+                parent.removeView(getBinding().webView);
             }
-            webView.removeAllViews();
-            webView.destroy();
+            getBinding().webView.removeAllViews();
+            getBinding().webView.destroy();
         }
     }
 
