@@ -1,4 +1,4 @@
-#XDroid 轻量级的Android快速开发框架
+#XDroid-Databinding 轻量级的Android快速开发框架
 
 ## 概述
 
@@ -6,10 +6,15 @@
 	<img src="xdroid_logo_128.png"/>
 </p>
 
-**XDroid**是一个轻量级的Android快速开发框架，由`UI`、`Cache`、`Event`、`ImageLoader`、`Kit`、`Log`、`Router`、`Net`等几个部分组成。其设计思想是使用接口对各模块解耦规范化，不强依赖某些明确的三方类库，使得三方类库可自由搭配组装，方便替换。可快速、自由的进行App开发。
+XDroid-Databinding是XDroid Android快速开发框架的Databinding版本，其使用方式类似于XDroid，大部分源码也来自XDroid。
 
 > Demo详细使用可参看Demo
 
+## XDroid
+
+XDroid是一个轻量级的Android快速开发框架，由UI、Cache、Event、ImageLoader、Kit、Log、Router、Net等几个部分组成。其设计思想是使用接口对各模块解耦规范化，不强依赖某些明确的三方类库，使得三方类库可自由搭配组装，方便替换。可快速、自由的进行App开发。
+
+传送门：[**https://github.com/limedroid/XDroid**](https://github.com/limedroid/XDroid)
 
 ## XDroidMvp
 
@@ -24,7 +29,7 @@ XDroid交流群：**153569290**
 
 ## 特性
 
-**XDroid**主要有这些特性：
+**XDroid-Databinding**主要有这些特性：
 
 * 基于MVC，可快速切换到MVP
 * 提供`XActivity`、`XFragment`、`SimpleRecAdapter`、`SimpleListAdapte`r等基类，可快速进行开发
@@ -39,7 +44,7 @@ XDroid交流群：**153569290**
 * 内置加密工具类 `XCodec`，你想要的加密姿势都有
 * 默认使用`okhttputils`作为api请求，可任性切换retrofit等其他库
 * 引入三方库极少
-
+* 使用Google官方Databinding
 
 详细说明请前往[wiki](https://github.com/limedroid/XDroid/wiki)
 
@@ -98,7 +103,6 @@ allprojects {
 
 ## 重要说明
 
-* [ButterKnife](https://github.com/JakeWharton/butterknife)使用的是8.4.0版本，重点是 `@BindView`，可以去项目官网查看。
 * [EventBus](https://github.com/greenrobot/EventBus)使用的是3.0.0版本,使用注解`@Subscribe`，具体如何使用可以查看官网。
 
 ## ToDo
@@ -116,10 +120,11 @@ allprojects {
 
 ## 感谢
 
-* 特别感谢基友石浩提供的建议和完美logo
 * 感谢干货提供的api
 
 
-## 关于我
-
+## 关于我们
+####droidlover
 **Email** : droidlover@126.com
+####fodroid
+**Email** : me.shihao@qq.com
