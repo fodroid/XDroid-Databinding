@@ -124,7 +124,11 @@ allprojects {
 
 
 ## 关于我们
-* ####droidlover
+####droidlover
 **Email** : droidlover@126.com
-* ####fodroid
+**Github** : https://github.com/limedroid
+**简书**：http://www.jianshu.com/u/276be5744ca0
+####fodroid
 **Email** : me.shihao@qq.com
+**Github** : https://github.com/fodroid
+**简书**：http://www.jianshu.com/u/caf7ea3607ed
