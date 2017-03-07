@@ -124,7 +124,7 @@ allprojects {
 
 
 ## 关于我们
-####droidlover
+* ####droidlover
 **Email** : droidlover@126.com
-####fodroid
+* ####fodroid
 **Email** : me.shihao@qq.com
