@@ -5,12 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 
-import cn.droidlover.xdroid.base.SimpleRecAdapter;
+
 import cn.droidlover.xdroid.base.SimpleRecBindingViewHolder;
 import cn.droidlover.xdroid.demo.R;
 import cn.droidlover.xdroid.demo.databinding.AdapterGirlBinding;
 import cn.droidlover.xdroid.demo.model.GankResults;
-import cn.droidlover.xdroid.imageloader.ILFactory;
+import cn.droidlover.xdroidbase.base.SimpleRecAdapter;
+import cn.droidlover.xdroidbase.imageloader.ILFactory;
 
 
 /**
@@ -41,7 +42,7 @@ public class GirlAdapter extends SimpleRecAdapter<GankResults.Item, SimpleRecBin
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getRecItemClick() != null) {
+                if (getSimpleItemClick() != null) {
 
                 }
             }

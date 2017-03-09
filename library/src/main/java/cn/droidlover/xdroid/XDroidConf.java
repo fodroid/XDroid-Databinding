@@ -1,7 +1,8 @@
 package cn.droidlover.xdroid;
 
-import cn.droidlover.xdroid.imageloader.ILoader;
-import cn.droidlover.xdroid.router.Router;
+
+import cn.droidlover.xdroidbase.imageloader.ILoader;
+import cn.droidlover.xdroidbase.router.Router;
 
 /**
  * Created by wanglei on 2016/12/4.

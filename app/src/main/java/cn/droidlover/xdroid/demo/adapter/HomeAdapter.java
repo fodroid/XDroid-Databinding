@@ -10,12 +10,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import cn.droidlover.xdroid.base.SimpleRecAdapter;
 import cn.droidlover.xdroid.base.SimpleRecBindingViewHolder;
 import cn.droidlover.xdroid.demo.R;
 import cn.droidlover.xdroid.demo.databinding.AdapterHomeBinding;
 import cn.droidlover.xdroid.demo.model.GankResults;
-import cn.droidlover.xdroid.imageloader.ILFactory;
+import cn.droidlover.xdroidbase.base.SimpleRecAdapter;
+import cn.droidlover.xdroidbase.imageloader.ILFactory;
 
 /**
  * Created by wanglei on 2016/12/10.
@@ -50,14 +50,6 @@ public class HomeAdapter extends SimpleRecAdapter<GankResults.Item, SimpleRecBin
                 holder.getBinding().ivPart.setVisibility(View.GONE);
                 holder.getBinding().ivVedio.setVisibility(View.VISIBLE);
                 holder.getBinding().tvItem.setText(item.getDesc());
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (getRecItemClick() != null) {
-
-                        }
-                    }
-                });
                 break;
             case "福利":
                 holder.getBinding().rlMessage.setVisibility(View.GONE);
@@ -66,28 +58,12 @@ public class HomeAdapter extends SimpleRecAdapter<GankResults.Item, SimpleRecBin
 
                 ILFactory.getLoader().loadNet(holder.getBinding().ivPart, item.getUrl(), null);
                 holder.getBinding().tvItem.setText("瞧瞧妹纸，扩展扩展视野......");
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (getRecItemClick() != null) {
-
-                        }
-                    }
-                });
                 break;
             default:
                 holder.getBinding().rlMessage.setVisibility(View.VISIBLE);
                 holder.getBinding().ivPart.setVisibility(View.GONE);
                 holder.getBinding().ivVedio.setVisibility(View.GONE);
                 holder.getBinding().tvItem.setText(item.getDesc());
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (getRecItemClick() != null) {
-
-                        }
-                    }
-                });
                 break;
         }
         Uri uri = null;
@@ -121,8 +97,8 @@ public class HomeAdapter extends SimpleRecAdapter<GankResults.Item, SimpleRecBin
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getRecItemClick() != null) {
-                    getRecItemClick().onItemClick(position, item, TAG_VIEW, holder);
+                if (getSimpleItemClick() != null) {
+                    getSimpleItemClick().onItemClick(position, item, TAG_VIEW, holder);
                 }
             }
         });

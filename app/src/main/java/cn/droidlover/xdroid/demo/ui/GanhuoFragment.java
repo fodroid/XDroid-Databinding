@@ -1,11 +1,12 @@
 package cn.droidlover.xdroid.demo.ui;
 
-import cn.droidlover.xdroid.base.SimpleRecAdapter;
 import cn.droidlover.xdroid.base.SimpleRecBindingViewHolder;
 import cn.droidlover.xdroid.demo.adapter.GanhuoAdapter;
 import cn.droidlover.xdroid.demo.adapter.HomeAdapter;
 import cn.droidlover.xdroid.demo.databinding.AdapterGanhuoBinding;
 import cn.droidlover.xdroid.demo.model.GankResults;
+import cn.droidlover.xdroidbase.base.SimpleItemCallback;
+import cn.droidlover.xdroidbase.base.SimpleRecAdapter;
 import cn.droidlover.xrecyclerview.RecyclerItemCallback;
 import cn.droidlover.xrecyclerview.XRecyclerView;
 
@@ -21,12 +22,12 @@ public class GanhuoFragment extends BasePagerFragment {
     public SimpleRecAdapter getAdapter() {
         if (adapter == null) {
             adapter = new GanhuoAdapter(context);
-            adapter.setRecItemClick(new RecyclerItemCallback<GankResults.Item,
+            adapter.setItemClick(new SimpleItemCallback<GankResults.Item,
                     SimpleRecBindingViewHolder<AdapterGanhuoBinding>>() {
                 @Override
                 public void onItemClick(int position, GankResults.Item model, int tag,
                                         SimpleRecBindingViewHolder<AdapterGanhuoBinding>
-                        holder) {
+                                                holder) {
                     super.onItemClick(position, model, tag, holder);
                     switch (tag) {
                         case GanhuoAdapter.TAG_VIEW:

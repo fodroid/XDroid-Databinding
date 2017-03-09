@@ -3,11 +3,11 @@ package cn.droidlover.xdroid.demo.adapter;
 import android.content.Context;
 import android.view.View;
 
-import cn.droidlover.xdroid.base.SimpleRecAdapter;
 import cn.droidlover.xdroid.base.SimpleRecBindingViewHolder;
 import cn.droidlover.xdroid.demo.R;
 import cn.droidlover.xdroid.demo.databinding.AdapterGanhuoBinding;
 import cn.droidlover.xdroid.demo.model.GankResults;
+import cn.droidlover.xdroidbase.base.SimpleRecAdapter;
 
 
 /**
@@ -40,8 +40,8 @@ public class GanhuoAdapter extends SimpleRecAdapter<GankResults.Item,
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getRecItemClick() != null) {
-                    getRecItemClick().onItemClick(position, item, TAG_VIEW, holder);
+                if (getSimpleItemClick() != null) {
+                    getSimpleItemClick().onItemClick(position, item, TAG_VIEW, holder);
                 }
             }
         });

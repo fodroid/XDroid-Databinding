@@ -2,9 +2,8 @@ package cn.droidlover.xdroid.base;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.Toast;
 
-import cn.droidlover.xdroid.kit.ToastManager;
+import cn.droidlover.xdroidbase.kit.ToastManager;
 
 /**
  * Created by wanglei on 2016/12/1.

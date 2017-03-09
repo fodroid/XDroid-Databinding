@@ -3,13 +3,13 @@ package cn.droidlover.xdroid.demo.ui;
 import android.os.Bundle;
 import android.view.View;
 
-import cn.droidlover.xdroid.base.SimpleRecAdapter;
 import cn.droidlover.xdroid.base.XLazyFragment;
 import cn.droidlover.xdroid.demo.R;
 import cn.droidlover.xdroid.demo.databinding.FragmentBasePagerBinding;
 import cn.droidlover.xdroid.demo.model.GankResults;
 import cn.droidlover.xdroid.demo.net.JsonCallback;
 import cn.droidlover.xdroid.demo.net.NetApi;
+import cn.droidlover.xdroidbase.base.SimpleRecAdapter;
 import cn.droidlover.xrecyclerview.XRecyclerContentLayout;
 import cn.droidlover.xrecyclerview.XRecyclerView;
 import okhttp3.Call;
