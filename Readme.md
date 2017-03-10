@@ -65,7 +65,14 @@ XDroid交流群：**153569290**
 
 
 # Get Started
-
+首先在您的app module 中 添加如下依赖: 
+```groovy
+android {
+    dataBinding {
+        enabled true
+    }
+}
+```
 ### 方式一使用，仅需三步：
 
 #### step1  
