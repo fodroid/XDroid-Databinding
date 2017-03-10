@@ -1,6 +1,6 @@
 XDroid-Databinding 轻量级的Android快速开发框架
 
-## 概述
+# 概述
 
 <p align="center">
 	<img src="xdroid_logo_128.png"/>
@@ -39,7 +39,7 @@ XDroid推出以来，得到了很多朋友的快速反馈，目前有很多朋�
 XDroid交流群：**153569290**
 
 
-## 特性
+# 特性
 
 **XDroid-Databinding**主要有这些特性：
 
@@ -66,20 +66,20 @@ XDroid交流群：**153569290**
 
 # Get Started
 
-### 方式一使用，仅需四步：
+### 方式一使用，仅需三步：
 
 #### step1  
 
 clone 'XDroid-Base'库到本地:
 ```groovy
-git clone https://github.com/fodroid/XDroid-Base.git
+git clone https://github.com/fodroid/XDroid-Databinding.git
 ```
 
 #### step2
 
 将`xdroidbase`作为依赖库，在您的app module 中 添加如下依赖:
 ```groovy
-compile project(':xdroidbase')
+compile project(':library')
 ```
 
 #### step3
@@ -100,9 +100,6 @@ allprojects {
 }
 ```
 
-#### step4
-
-调用`XDroidBaseConf`配置类，主要针对log、cache、router、imageloader。若采用默认配置，此步骤可略过.
 
 ### 第二种方式，通过JitPack引入
 
@@ -119,7 +116,7 @@ allprojects {
 #### step2 添加依赖:
 ```groovy
 dependencies {
-	        compile 'com.github.fodroid:XDroid-Base:v1.3'
+	        compile 'com.github.fodroid:XDroid-Databinding:v1.3'
 }
 ```
 
