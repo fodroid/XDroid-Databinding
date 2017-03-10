@@ -61,8 +61,7 @@ XDroid交流群：**153569290**
 * 内置常用工具类：`package`、`random`、`file`...,提供的都是非常常用的方法
 * 内置加密工具类 `XCodec`，你想要的加密姿势都有
 
-详细说明请前往[XDroid-Base wiki](https://github.com/fodroid/XDroid-Base/wiki)
-[XDroid-Databinding wiki](https://github.com/fodroid/XDroid-Databinding/wiki)
+详细说明请前往[XDroid-Databinding wiki](https://github.com/fodroid/XDroid-Databinding/wiki)
 
 
 # Get Started
