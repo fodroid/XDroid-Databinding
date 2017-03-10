@@ -1,4 +1,4 @@
-# XDroid-Databinding 轻量级的Android快速开发框架
+XDroid-Databinding 轻量级的Android快速开发框架
 
 ## 概述
 
