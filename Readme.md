@@ -1,4 +1,4 @@
-#XDroid-Databinding 轻量级的Android快速开发框架
+# XDroid-Databinding 轻量级的Android快速开发框架
 
 ## 概述
 
@@ -6,13 +6,19 @@
 	<img src="xdroid_logo_128.png"/>
 </p>
 
-XDroid-Databinding是XDroid Android快速开发框架的Databinding版本，其使用方式类似于XDroid，大部分源码也来自XDroid。
+XDroid-Databinding是XDroid Android快速开发框架的Databinding版本，其使用方式类似于XDroid，大部分源码也来自XDroid。由UI、Cache、Event、ImageLoader、Kit、Log、Router、Net等几个部分组成。
 
 > Demo详细使用可参看Demo
 
+## XDroid-Base
+
+XDroid-Base包含开发中常用的一些快速开发类，可作为一个简单的开发框架,由Base、Cache、ImageLoader、Kit、Log、Router等几个部分组成。可快速、自由的按需扩展进行App开发。
+
+传送门：[**https://github.com/fodroid/XDroid-Base**](https://github.com/fodroid/XDroid-Base)
+
 ## XDroid
 
-XDroid是一个轻量级的Android快速开发框架，由UI、Cache、Event、ImageLoader、Kit、Log、Router、Net等几个部分组成。其设计思想是使用接口对各模块解耦规范化，不强依赖某些明确的三方类库，使得三方类库可自由搭配组装，方便替换。可快速、自由的进行App开发。
+XDroid是一个轻量级的Android快速开发框架，基于XDroid-Base，在此基础上增加了由UI、Event、Net等几个部分组成。其设计思想是使用接口对各模块解耦规范化，不强依赖某些明确的三方类库，使得三方类库可自由搭配组装，方便替换。可快速、自由的进行App开发。
 
 传送门：[**https://github.com/limedroid/XDroid**](https://github.com/limedroid/XDroid)
 
@@ -21,6 +27,12 @@ XDroid是一个轻量级的Android快速开发框架，由UI、Cache、Event、I
 XDroidMvp是基于XDroid的MVP实现，不是传统意义的MVP，不需写接口，可无缝切换MVC，可能是当前最好用的MVP框架。
 
 传送门：[**https://github.com/limedroid/XDroidMvp**](https://github.com/limedroid/XDroidMvp)
+
+## XDroidMvp-Databinding
+
+XDroidMvp-Databinding是基于XDroidMvp的Databinding版本，大部分源码也与XDroidMvp类似。
+
+传送门：开发中
 
 XDroid推出以来，得到了很多朋友的快速反馈，目前有很多朋友在新项目或是老项目中使用XDroid，为了方便学习和交流，可以加入QQ群：
 
@@ -32,42 +44,46 @@ XDroid交流群：**153569290**
 **XDroid-Databinding**主要有这些特性：
 
 * 基于MVC，可快速切换到MVP
-* 提供`XActivity`、`XFragment`、`SimpleRecAdapter`、`SimpleListAdapte`r等基类，可快速进行开发
+* 提供`XActivity`、`XFragment`等基类，可快速进行开发
 * 完整封装XRecyclerView，可实现绝大部分需求
 * QTContentLayout、XRecyclerContentLayout实现loading、error、empty、content四种状态的自由切换
-* 实现了Memory、Disk、SharedPreferences三种方式的缓存，可自由扩展
 * 内置了`EventBus`，可自由切换到其他事件订阅库
-* 内置`Glide`，可自由切换其他图片加载库
-* 可输出漂亮的`Log`，支持Json、Xml、Throwable等，蝇量级实现
-* 内置链式路由
-* 内置常用工具类：package、random、file...,提供的都是非常常用的方法
-* 内置加密工具类 `XCodec`，你想要的加密姿势都有
 * 默认使用`okhttputils`作为api请求，可任性切换retrofit等其他库
 * 引入三方库极少
 * 使用Google官方Databinding
+* 基于XDroid-Base，包含常用的快速开发工具类。
+* 提供`SimpleRecAdapter`、`SimpleListAdapte`、`XRecyclerAdapter`、`XListAdapter`等基类
+* 实现了Memory、Disk、SharedPreferences三种方式的缓存，可自由扩展
+* 内置`Glide`，可自由切换其他图片加载库
+* 可输出漂亮的`Log`，支持Json、Xml、Throwable等，蝇量级实现
+* 内置链式路由
+* 内置`Toast`工具类
+* 内置常用工具类：`package`、`random`、`file`...,提供的都是非常常用的方法
+* 内置加密工具类 `XCodec`，你想要的加密姿势都有
 
-详细说明请前往[wiki](https://github.com/limedroid/XDroid/wiki)
+详细说明请前往[XDroid-Base wiki](https://github.com/fodroid/XDroid-Base/wiki)
+[XDroid-Databinding wiki](https://github.com/fodroid/XDroid-Databinding/wiki)
 
 
-## Get Started
+# Get Started
 
-使用，仅需四步：
+### 方式一使用，仅需四步：
 
-### step1  
+#### step1  
 
-clone 'XDroid'库到本地:
+clone 'XDroid-Base'库到本地:
 ```groovy
-git clone https://github.com/limedroid/XDroid.git
+git clone https://github.com/fodroid/XDroid-Base.git
 ```
 
-### step2
+#### step2
 
-将library作为依赖库，在您的app module 中 添加如下依赖:
+将`xdroidbase`作为依赖库，在您的app module 中 添加如下依赖:
 ```groovy
-compile project(':library')
+compile project(':xdroidbase')
 ```
 
-### step3
+#### step3
 
 拷贝`conf.gradle`到您的项目根目录，并修改项目gradle文件下引入：
 ```groovy
@@ -85,12 +101,31 @@ allprojects {
 }
 ```
 
-### step4
+#### step4
 
-修改`XDroidConf`配置类，主要针对log、cache、router、imageloader。若采用默认配置，此步骤可略过.
+调用`XDroidBaseConf`配置类，主要针对log、cache、router、imageloader。若采用默认配置，此步骤可略过.
+
+### 第二种方式，通过JitPack引入
+
+#### step1 在根目录的gradle文件中配置:
+```groovy
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+```
+
+#### step2 添加依赖:
+```groovy
+dependencies {
+	        compile 'com.github.fodroid:XDroid-Base:v1.3'
+}
+```
 
 
-## Demo效果
+# Demo效果
 
 <p align="center">
 	<img src="art/snapshot_2.png"/>
@@ -101,34 +136,38 @@ allprojects {
 </p>
 
 
-## 重要说明
+# 重要说明
 
 * [EventBus](https://github.com/greenrobot/EventBus)使用的是3.0.0版本,使用注解`@Subscribe`，具体如何使用可以查看官网。
 
-## ToDo
+# ToDo
 
 * MVP、retrofit、rx迁移（v2.0）
 * 权限适配（v2.0）
 * compact工具（v3.0）
 
 
-## 相关文档
+# 相关文档
 
 [我是如何搭建Android快速开发框架的(概述)](http://www.jianshu.com/p/cde5468029b4)
 
 [我是如何搭建Android快速开发框架的之UI篇(上)](http://www.jianshu.com/p/c909f72cdd02)
 
-## 感谢
+# 感谢
 
 * 感谢干货提供的api
 
 
-## 关于我们
+# 关于我们
 ### droidlover
-**Email** : droidlover@126.com</br>
-**Github** : https://github.com/limedroid</br>
+**Email** : droidlover@126.com
+
+**Github** : https://github.com/limedroid
+
 **简书**：http://www.jianshu.com/u/276be5744ca0
 ### fodroid
-**Email** : me.shihao@qq.com</br>
-**Github** : https://github.com/fodroid</br>
+**Email** : me.shihao@qq.com
+
+**Github** : https://github.com/fodroid
+
 **简书**：http://www.jianshu.com/u/caf7ea3607ed
