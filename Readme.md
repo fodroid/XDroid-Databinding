@@ -84,7 +84,7 @@ git clone https://github.com/fodroid/XDroid-Databinding.git
 
 #### step2
 
-将`xdroidbase`作为依赖库，在您的app module 中 添加如下依赖:
+将`library`作为依赖库，在您的app module 中 添加如下依赖:
 ```groovy
 compile project(':library')
 ```
