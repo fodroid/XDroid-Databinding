@@ -1,5 +1,7 @@
 XDroid-Databinding 轻量级的Android快速开发框架
+
 [![](https://jitpack.io/v/fodroid/XDroid-DataBinding.svg)](https://jitpack.io/#fodroid/XDroid-DataBinding)
+
 # 概述
 
 <p align="center">
