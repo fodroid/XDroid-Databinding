@@ -11,13 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.trello.rxlifecycle2.components.support.RxFragment;
+
 import cn.droidlover.xdroid.event.BusFactory;
 
 /**
  * Created by wanglei on 2016/11/27.
  */
 
-public abstract class XFragment<D extends ViewDataBinding> extends Fragment implements UiCallback {
+public abstract class XFragment<D extends ViewDataBinding> extends RxFragment implements UiCallback {
     protected View rootView;
     protected LayoutInflater layoutInflater;
     protected Activity context;

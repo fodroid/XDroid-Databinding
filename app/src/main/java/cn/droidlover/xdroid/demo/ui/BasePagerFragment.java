@@ -7,12 +7,13 @@ import cn.droidlover.xdroid.base.XLazyFragment;
 import cn.droidlover.xdroid.demo.R;
 import cn.droidlover.xdroid.demo.databinding.FragmentBasePagerBinding;
 import cn.droidlover.xdroid.demo.model.GankResults;
-import cn.droidlover.xdroid.demo.net.JsonCallback;
 import cn.droidlover.xdroid.demo.net.NetApi;
+import cn.droidlover.xdroid.net.XApi;
 import cn.droidlover.xdroidbase.base.SimpleRecAdapter;
-import cn.droidlover.xrecyclerview.XRecyclerContentLayout;
 import cn.droidlover.xrecyclerview.XRecyclerView;
-import okhttp3.Call;
+import io.reactivex.Observer;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
 
 /**
  * Created by wanglei on 2016/12/10.
@@ -53,32 +54,44 @@ public abstract class BasePagerFragment extends XLazyFragment<FragmentBasePagerB
     }
 
     public void loadData(final int page) {
-        NetApi.getGankData(getType(), PAGE_SIZE, page, new JsonCallback<GankResults>(1 * 60 * 60 * 1000) {
+        NetApi.getGankService().getGankData(getType(), PAGE_SIZE, page)
+                .compose(XApi.<GankResults>getObservableScheduler())
+                .compose(this.<GankResults>bindToLifecycle())
+                .subscribe(new Observer<GankResults>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
 
-            @Override
-            public void onFail(Call call, Exception e, int id) {
-                getBinding().contentLayout.showError();
-            }
-
-            @Override
-            public void onResponse(GankResults response, int id) {
-                if (!response.isError()) {
-                    if (page > 1) {
-                        getAdapter().addData(response.getResults());
-                    } else {
-                        getAdapter().setData(response.getResults());
                     }
 
-                    getBinding().contentLayout.getRecyclerView().setPage(page, MAX_PAGE);
+                    @Override
+                    public void onNext(@NonNull GankResults gankResults) {
+                        if (!gankResults.isError()) {
+                            if (page > 1) {
+                                getAdapter().addData(gankResults.getResults());
+                            } else {
+                                getAdapter().setData(gankResults.getResults());
+                            }
 
-                    if (getAdapter().getItemCount() < 1) {
-                        getBinding().contentLayout.showEmpty();
-                        return;
+                            getBinding().contentLayout.getRecyclerView().setPage(page, MAX_PAGE);
+
+                            if (getAdapter().getItemCount() < 1) {
+                                getBinding().contentLayout.showEmpty();
+                                return;
+                            }
+
+                        }
                     }
 
-                }
-            }
-        });
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        getBinding().contentLayout.showError();
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     public abstract SimpleRecAdapter getAdapter();

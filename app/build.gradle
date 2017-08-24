@@ -25,6 +25,8 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile rootProject.ext.dependencies["avi-loading"]
     compile project(":library")
+    compile rootProject.ext.dependencies["design"]
+    compile rootProject.ext.dependencies["xrecyclerview"]
+    compile rootProject.ext.dependencies["avi-loading"]
 }

@@ -14,23 +14,24 @@ ext {
     ]
 
     dependencies = [
-            "appcompat-v7"   : "com.android.support:appcompat-v7:${android["VSupportSdk"]}",
-            "support-v4"     : "com.android.support:support-v4:${android["VSupportSdk"]}",
-            "design"         : "com.android.support:design:${android["VSupportSdk"]}",
-            "annotations"    : "com.android.support:support-annotations:${android["VSupportSdk"]}",
-            "recyclerview-v7": "com.android.support:recyclerview-v7:${android["VSupportSdk"]}",
-            "butterknife"    : "com.jakewharton:butterknife:8.4.0",
-            "butterknife-apt": "com.jakewharton:butterknife-compiler:8.4.0",
-            "glide"          : "com.github.bumptech.glide:glide:3.7.0",
-            "picasso"        : "com.squareup.picasso:picasso:2.5.2",
-            "okhttp3"        : "com.squareup.okhttp3:okhttp:3.3.0",
-            "gson"           : "com.google.code.gson:gson:2.6.2",
-            "eventbus"       : "org.greenrobot:eventbus:3.0.0",
-            "xrecyclerview"  : "com.github.limedroid:ARecyclerView:v1.1.5",
-            "okhttputils"    : "com.zhy:okhttputils:2.6.2",
-            "canary-debug"   : "com.squareup.leakcanary:leakcanary-android:1.4-beta2",
-            "canary-release" : "com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2",
-            "avi-loading"    : "com.wang.avi:library:1.0.2",
-            "XDroid-Base"    : "com.github.fodroid:XDroid-Base:v1.4"
+            "appcompat-v7"             : "com.android.support:appcompat-v7:${android["VSupportSdk"]}",
+            "support-v4"               : "com.android.support:support-v4:${android["VSupportSdk"]}",
+            "design"                   : "com.android.support:design:${android["VSupportSdk"]}",
+            "annotations"              : "com.android.support:support-annotations:${android["VSupportSdk"]}",
+            "recyclerview-v7"          : "com.android.support:recyclerview-v7:${android["VSupportSdk"]}",
+            "xrecyclerview"            : "com.github.limedroid:ARecyclerView:v1.1.5",
+            "avi-loading"              : "com.wang.avi:library:1.0.2",
+            "glide"                    : "com.github.bumptech.glide:glide:3.7.0",
+            "picasso"                  : "com.squareup.picasso:picasso:2.5.2",
+            "eventbus"                 : "org.greenrobot:eventbus:3.0.0",
+            "XDroid-Base"              : "com.github.fodroid:XDroid-Base:v1.4.1",
+            "retrofit2"                : "com.squareup.retrofit2:retrofit:2.3.0",
+            "retrofit2-adapter-rxjava2": "com.squareup.retrofit2:adapter-rxjava2:2.3.0",
+            "retrofit2-converter-gson" : "com.squareup.retrofit2:converter-gson:2.3.0",
+            "okhttp3"                  : "com.squareup.okhttp3:okhttp:3.3.0",
+            "rxjava2"                  : "io.reactivex.rxjava2:rxjava:2.1.0",
+            "rxandroid"                : "io.reactivex.rxjava2:rxandroid:2.0.1",
+            "rxlifecycle2"             : "com.trello.rxlifecycle2:rxlifecycle:2.1.0",
+            "rxlifecycle-components"   : "com.trello.rxlifecycle2:rxlifecycle-components:2.1.0"
     ]
 }

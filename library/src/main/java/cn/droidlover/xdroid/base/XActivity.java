@@ -8,13 +8,15 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
+
 import cn.droidlover.xdroid.event.BusFactory;
 
 /**
  * Created by wanglei on 2016/11/27.
  */
 
-public abstract class XActivity<D extends ViewDataBinding> extends AppCompatActivity implements UiCallback {
+public abstract class XActivity<D extends ViewDataBinding> extends RxAppCompatActivity implements UiCallback {
     protected Activity context;
     protected UiDelegate uiDelegate;
     private D binding;

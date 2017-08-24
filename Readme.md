@@ -40,6 +40,11 @@ XDroid推出以来，得到了很多朋友的快速反馈，目前有很多朋�
 
 XDroid交流群：**153569290**
 
+# v1.4更新
+
+* 更新网络请求为OkHttp+Retrofit2+RxJava2
+* 使用Rxlifecycle管理，防止rx出现内存泄漏
+
 
 # 特性
 

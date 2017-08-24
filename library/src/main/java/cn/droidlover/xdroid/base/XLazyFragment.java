@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import cn.droidlover.xdroid.event.BusFactory;
-import cn.droidlover.xdroidbase.base.LazyFragment;
 
 /**
  * Created by shihao on 2017/1/26.
