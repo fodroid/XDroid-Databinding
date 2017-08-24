@@ -130,7 +130,7 @@ allprojects {
 #### step2 添加依赖:
 ```groovy
 dependencies {
-	        compile 'com.github.fodroid:XDroid-Databinding:v1.3'
+	        compile 'com.github.fodroid:XDroid-Databinding:v1.4'
 }
 ```
 
