@@ -51,11 +51,9 @@ XDroid交流群：**153569290**
 **XDroid-Databinding**主要有这些特性：
 
 * 基于MVC，可快速切换到MVP
-* 提供`XActivity`、`XFragment`等基类，可快速进行开发
-* 完整封装XRecyclerView，可实现绝大部分需求
-* QTContentLayout、XRecyclerContentLayout实现loading、error、empty、content四种状态的自由切换
+* 提供`XActivity`、`XFragment`、`XLazyFragment`等基类，可快速进行开发
 * 内置了`EventBus`，可自由切换到其他事件订阅库
-* 默认使用`okhttputils`作为api请求，可任性切换retrofit等其他库
+* 使用retrofit网络加载库，搭配OKhttp与Rxjava
 * 引入三方库极少
 * 使用Google官方Databinding
 * 基于XDroid-Base，包含常用的快速开发工具类。
@@ -80,42 +78,8 @@ android {
     }
 }
 ```
-### 方式一使用，仅需三步：
 
-#### step1  
-
-clone 'XDroid-Base'库到本地:
-```groovy
-git clone https://github.com/fodroid/XDroid-Databinding.git
-```
-
-#### step2
-
-将`library`作为依赖库，在您的app module 中 添加如下依赖:
-```groovy
-compile project(':library')
-```
-
-#### step3
-
-拷贝`conf.gradle`到您的项目根目录，并修改项目gradle文件下引入：
-```groovy
-apply from: "conf.gradle"
-```
-
-并添加:
-
-```groovy
-allprojects {
-    repositories {
-        jcenter()
-        maven { url "https://jitpack.io" }
-    }
-}
-```
-
-
-### 第二种方式，通过JitPack引入
+### 通过JitPack引入
 
 #### step1 在根目录的gradle文件中配置:
 ```groovy
@@ -149,12 +113,6 @@ dependencies {
 # 重要说明
 
 * [EventBus](https://github.com/greenrobot/EventBus)使用的是3.0.0版本,使用注解`@Subscribe`，具体如何使用可以查看官网。
-
-# ToDo
-
-* MVP、retrofit、rx迁移（v2.0）
-* 权限适配（v2.0）
-* compact工具（v3.0）
 
 
 # 相关文档
