@@ -30,7 +30,6 @@ dependencies {
     compile rootProject.ext.dependencies["appcompat-v7"]
     compile rootProject.ext.dependencies["recyclerview-v7"]
     compile rootProject.ext.dependencies["eventbus"]
-    compile rootProject.ext.dependencies["glide"]
     compile rootProject.ext.dependencies["XDroid-Base"]
     compile rootProject.ext.dependencies["retrofit2"]
     compile rootProject.ext.dependencies["retrofit2-adapter-rxjava2"]

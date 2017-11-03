@@ -8,10 +8,10 @@ import android.view.View;
  * Created by shihao on 2017/3/11.
  */
 
-public class SimpleListBindingViewHolder<T extends ViewDataBinding> {
-    private T binding;
+public class SimpleListBindingViewHolder<V extends ViewDataBinding> {
+    private V binding;
 
-    public SimpleListBindingViewHolder(T binding) {
+    public SimpleListBindingViewHolder(V binding) {
         this.binding = binding;
     }
 
@@ -19,7 +19,7 @@ public class SimpleListBindingViewHolder<T extends ViewDataBinding> {
         this.binding = DataBindingUtil.bind(itemView);
     }
 
-    public T getBinding() {
+    public V getBinding() {
         return binding;
     }
 }

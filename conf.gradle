@@ -1,16 +1,16 @@
 ext {
 
     android = [
-            compileSdkVersion: 24,
-            buildToolsVersion: "24.0.1",
+            compileSdkVersion: 26,
+            buildToolsVersion: "26.0.2",
 
             minSdkVersion    : 15,
-            targetSdkVersion : 24,
+            targetSdkVersion : 26,
 
             versionCode      : 1,
             versionName      : '1.0.0',
 
-            VSupportSdk      : '25.1.0'
+            VSupportSdk      : '26.1.0'
     ]
 
     dependencies = [
@@ -24,14 +24,14 @@ ext {
             "glide"                    : "com.github.bumptech.glide:glide:3.7.0",
             "picasso"                  : "com.squareup.picasso:picasso:2.5.2",
             "eventbus"                 : "org.greenrobot:eventbus:3.0.0",
-            "XDroid-Base"              : "com.github.fodroid:XDroid-Base:v1.4.1",
+            "XDroid-Base"              : "com.github.fodroid:XDroid-Base:v1.5.1",
             "retrofit2"                : "com.squareup.retrofit2:retrofit:2.3.0",
             "retrofit2-adapter-rxjava2": "com.squareup.retrofit2:adapter-rxjava2:2.3.0",
             "retrofit2-converter-gson" : "com.squareup.retrofit2:converter-gson:2.3.0",
-            "okhttp3"                  : "com.squareup.okhttp3:okhttp:3.3.0",
-            "rxjava2"                  : "io.reactivex.rxjava2:rxjava:2.1.0",
+            "okhttp3"                  : "com.squareup.okhttp3:okhttp:3.9.0",
+            "rxjava2"                  : "io.reactivex.rxjava2:rxjava:2.1.6",
             "rxandroid"                : "io.reactivex.rxjava2:rxandroid:2.0.1",
-            "rxlifecycle2"             : "com.trello.rxlifecycle2:rxlifecycle:2.1.0",
-            "rxlifecycle-components"   : "com.trello.rxlifecycle2:rxlifecycle-components:2.1.0"
+            "rxlifecycle2"             : "com.trello.rxlifecycle2:rxlifecycle:2.2.0",
+            "rxlifecycle-components"   : "com.trello.rxlifecycle2:rxlifecycle-components:2.2.0"
     ]
 }

@@ -19,12 +19,12 @@ import cn.droidlover.xdroid.event.BusFactory;
  * Created by wanglei on 2016/11/27.
  */
 
-public abstract class XFragment<D extends ViewDataBinding> extends RxFragment implements UiCallback {
+public abstract class XFragment<V extends ViewDataBinding> extends RxFragment implements UiCallback {
     protected View rootView;
     protected LayoutInflater layoutInflater;
     protected Activity context;
     protected UiDelegate uiDelegate;
-    private D binding;
+    private V binding;
 
     @Nullable
     @Override
@@ -43,7 +43,7 @@ public abstract class XFragment<D extends ViewDataBinding> extends RxFragment im
         return rootView;
     }
 
-    protected D getBinding() {
+    protected V getBinding() {
         return binding;
     }
 
@@ -89,7 +89,8 @@ public abstract class XFragment<D extends ViewDataBinding> extends RxFragment im
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        BusFactory.getBus().unregister(this);
+        if (useEventBus())
+            BusFactory.getBus().unregister(this);
         getUiDelegate().destory();
     }
 

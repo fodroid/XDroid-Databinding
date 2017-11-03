@@ -9,10 +9,10 @@ import android.view.View;
  * Created by shihao on 2017/3/7.
  */
 
-public class SimpleRecBindingViewHolder<T extends ViewDataBinding> extends RecyclerView.ViewHolder {
-    private T binding;
+public class SimpleRecBindingViewHolder<V extends ViewDataBinding> extends RecyclerView.ViewHolder {
+    private V binding;
 
-    public SimpleRecBindingViewHolder(T binding) {
+    public SimpleRecBindingViewHolder(V binding) {
         super(binding.getRoot());
         this.binding = binding;
     }
@@ -22,7 +22,7 @@ public class SimpleRecBindingViewHolder<T extends ViewDataBinding> extends Recyc
         this.binding = DataBindingUtil.bind(itemView);
     }
 
-    public T getBinding() {
+    public V getBinding() {
         return binding;
     }
 }

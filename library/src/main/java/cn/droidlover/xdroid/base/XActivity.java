@@ -16,10 +16,10 @@ import cn.droidlover.xdroid.event.BusFactory;
  * Created by wanglei on 2016/11/27.
  */
 
-public abstract class XActivity<D extends ViewDataBinding> extends RxAppCompatActivity implements UiCallback {
+public abstract class XActivity<V extends ViewDataBinding> extends RxAppCompatActivity implements UiCallback {
     protected Activity context;
     protected UiDelegate uiDelegate;
-    private D binding;
+    private V binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public abstract class XActivity<D extends ViewDataBinding> extends RxAppCompatAc
         initData(savedInstanceState);
     }
 
-    protected D getBinding() {
+    protected V getBinding() {
         return binding;
     }
 
@@ -85,7 +85,8 @@ public abstract class XActivity<D extends ViewDataBinding> extends RxAppCompatAc
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        BusFactory.getBus().unregister(this);
+        if (useEventBus())
+            BusFactory.getBus().unregister(this);
         getUiDelegate().destory();
     }
 }

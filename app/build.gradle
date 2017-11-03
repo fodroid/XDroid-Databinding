@@ -12,6 +12,7 @@ android {
         versionName rootProject.ext.android.versionName
     }
 
+
     buildTypes {
         release {
             minifyEnabled false

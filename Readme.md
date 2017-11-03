@@ -68,6 +68,9 @@ XDroid交流群：**153569290**
 
 详细说明请前往[XDroid-Databinding wiki](https://github.com/fodroid/XDroid-Databinding/wiki)
 
+# 更新
+### v1.5.1
+* 优化一些命名，更新库
 
 # Get Started
 首先在您的app module 中 添加如下依赖: 

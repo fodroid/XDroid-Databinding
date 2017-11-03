@@ -11,11 +11,11 @@ import cn.droidlover.xdroid.event.BusFactory;
  * Created by shihao on 2017/1/26.
  */
 
-public abstract class XLazyFragment<D extends ViewDataBinding> extends LazyFragment implements UiCallback {
+public abstract class XLazyFragment<V extends ViewDataBinding> extends LazyFragment implements UiCallback {
 
     private UiDelegate uiDelegate;
 
-    private D binding;
+    private V binding;
 
     @Override
     protected void onCreateViewLazy(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public abstract class XLazyFragment<D extends ViewDataBinding> extends LazyFragm
         initData(savedInstanceState);
     }
 
-    protected D getBinding() {
+    protected V getBinding() {
         return binding;
     }
 
