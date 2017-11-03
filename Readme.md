@@ -39,9 +39,10 @@ XDroidMvp-Databinding是基于XDroidMvp的Databinding版本，大部分源码也
 XDroid推出以来，得到了很多朋友的快速反馈，目前有很多朋友在新项目或是老项目中使用XDroid，为了方便学习和交流，可以加入QQ群：
 
 XDroid交流群：**153569290**
-
-# v1.5更新
-
+# 更新
+### v1.5.1
+* 优化一些命名，更新库
+### v1.5
 * 更新网络请求为OkHttp+Retrofit2+RxJava2
 * 使用Rxlifecycle管理，防止rx出现内存泄漏
 
@@ -67,10 +68,6 @@ XDroid交流群：**153569290**
 * 内置加密工具类 `XCodec`，你想要的加密姿势都有
 
 详细说明请前往[XDroid-Databinding wiki](https://github.com/fodroid/XDroid-Databinding/wiki)
-
-# 更新
-### v1.5.1
-* 优化一些命名，更新库
 
 # Get Started
 首先在您的app module 中 添加如下依赖: 
