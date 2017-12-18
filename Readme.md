@@ -40,6 +40,8 @@ XDroid推出以来，得到了很多朋友的快速反馈，目前有很多朋�
 
 XDroid交流群：**153569290**
 # 更新
+### v1.5.3
+* 修复bug
 ### v1.5.2
 * 网络库增加统一错误处理，增加retryWhen
 * 增加SimpleBindingRecAdapter

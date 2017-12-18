@@ -141,7 +141,9 @@ public class XApi {
         return new FlowableTransformer<T, T>() {
             @Override
             public Publisher<T> apply(Flowable<T> upstream) {
-                return upstream.subscribeOn(Schedulers.io())
+                return upstream
+                        .onErrorResumeNext(new ServerResultErrorFunc2<T>())
+                        .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread());
             }
         };
@@ -151,7 +153,9 @@ public class XApi {
         return new ObservableTransformer<T, T>() {
             @Override
             public ObservableSource<T> apply(@NonNull Observable<T> upstream) {
-                return upstream.subscribeOn(Schedulers.io())
+                return upstream
+                        .onErrorResumeNext(new ServerResultErrorFunc<T>())
+                        .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread());
             }
         };
