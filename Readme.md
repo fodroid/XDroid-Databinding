@@ -40,6 +40,11 @@ XDroid推出以来，得到了很多朋友的快速反馈，目前有很多朋�
 
 XDroid交流群：**153569290**
 # 更新
+### v1.5.2
+* 网络库增加统一错误处理，增加retryWhen
+* 增加SimpleBindingRecAdapter
+* 更新xdroid到最新
+
 ### v1.5.1
 * 优化一些命名，更新库
 ### v1.5
@@ -94,7 +99,7 @@ allprojects {
 #### step2 添加依赖:
 ```groovy
 dependencies {
-	        compile 'com.github.fodroid:XDroid-Databinding:v1.5'
+	        compile 'com.github.fodroid:XDroid-Databinding:v1.5.2'
 }
 ```
 
