@@ -27,6 +27,8 @@ public class ExceptionEngine {
     private static final int GATEWAY_TIMEOUT = 504;
 
     public static ResultErrorException handleException(Throwable e) {
+        //输出错误信息
+        e.printStackTrace();
         ResultErrorException ex = new ResultErrorException();
         if (e instanceof HttpException) {             //HTTP错误
             HttpException httpException = (HttpException) e;
@@ -41,6 +43,7 @@ public class ExceptionEngine {
                 case BAD_GATEWAY:
                 case SERVICE_UNAVAILABLE:
                 default:
+                    ex.code = ResultErrorException.CODE_HTTP_ERROR;
                     ex.msg = "网络错误";  //均视为网络错误
                     break;
             }
@@ -50,16 +53,20 @@ public class ExceptionEngine {
         } else if (e instanceof JsonParseException
                 || e instanceof JSONException
                 || e instanceof ParseException) {
+            ex.code = ResultErrorException.CODE_PARSE_ERROR;
             ex.msg = "解析错误";            //均视为解析错误
             return ex;
         } else if (e instanceof ConnectException) {
+            ex.code = ResultErrorException.CODE_CONNECT_ERROR;
             ex.msg = "连接失败";  //均视为网络错误
             return ex;
-        } else if (e instanceof UnknownHostException) {
-            ex.msg = "网络错误";
-            return ex;
         } else if (e instanceof SocketTimeoutException) {
+            ex.code = ResultErrorException.CODE_CONNECT_ERROR;
             ex.msg = "连接失败";
+            return ex;
+        } else if (e instanceof UnknownHostException) {
+            ex.code = ResultErrorException.CODE_HTTP_ERROR;
+            ex.msg = "网络错误";
             return ex;
         } else {
             ex.msg = "未知错误";          //未知错误
