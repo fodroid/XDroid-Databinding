@@ -6,7 +6,7 @@ import java.io.IOException;
  * Created by shihao<shihao.me@qq.com> on 2017/12/14.
  */
 
-public class ResultErrorException extends Exception {
+public class ResultErrorException extends IOException {
 
     /**
      * 网络错误
