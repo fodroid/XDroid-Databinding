@@ -8,6 +8,7 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import cn.droidlover.xdroid.event.BusFactory;

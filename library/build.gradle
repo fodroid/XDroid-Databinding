@@ -23,6 +23,10 @@ android {
     dataBinding {
         enabled true
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -37,7 +41,7 @@ dependencies {
     implementation rootProject.ext.dependencies["okhttp3"]
     implementation rootProject.ext.dependencies["rxjava2"]
     implementation rootProject.ext.dependencies["rxandroid"]
-    implementation rootProject.ext.dependencies["rxlifecycle3"]
+    implementation rootProject.ext.dependencies["rxlifecycle2"]
     implementation rootProject.ext.dependencies["rxlifecycle-components"]
     implementation rootProject.ext.dependencies["rxlifecycle-android"]
 }
